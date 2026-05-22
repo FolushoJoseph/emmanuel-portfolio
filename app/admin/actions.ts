@@ -32,12 +32,8 @@ export async function createProject(formData: FormData) {
   const sectionsJson = formData.get('sections') as string;
   const sections: Section[] = JSON.parse(sectionsJson || '[]');
 
-  /* Cover image upload */
-  const coverFile = formData.get('cover_image') as File | null;
-  let cover_image = '';
-  if (coverFile && coverFile.size > 0) {
-    cover_image = await uploadFile(coverFile, 'covers');
-  }
+  /* Cover image — already uploaded via uploadMediaFile, value is a URL string */
+  const cover_image = (formData.get('cover_image') as string) || '';
 
   const { error } = await supabaseAdmin.from('projects').insert({
     slug,
@@ -72,7 +68,7 @@ export async function updateProject(id: string, formData: FormData) {
   const sectionsJson = formData.get('sections') as string;
   const sections: Section[] = JSON.parse(sectionsJson || '[]');
 
-  const coverFile = formData.get('cover_image') as File | null;
+  const coverValue = (formData.get('cover_image') as string) || '';
   const updates: Record<string, unknown> = {
     title,
     slug: slugify(title),
@@ -86,8 +82,8 @@ export async function updateProject(id: string, formData: FormData) {
     updated_at: new Date().toISOString(),
   };
 
-  if (coverFile && coverFile.size > 0) {
-    updates.cover_image = await uploadFile(coverFile, 'covers');
+  if (coverValue) {
+    updates.cover_image = coverValue;
   }
 
   const { error } = await supabaseAdmin.from('projects').update(updates).eq('id', id);

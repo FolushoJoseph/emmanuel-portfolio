@@ -311,7 +311,7 @@ export default function ProjectForm({ project, onSubmit, submitLabel = 'Save Pro
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
     fd.set('sections', JSON.stringify(sections.map((s, i) => ({ ...s, order: i }))));
-    fd.delete('cover_image');
+    fd.set('cover_image', coverUrl);
     await onSubmit(fd);
     setSubmitting(false);
   }

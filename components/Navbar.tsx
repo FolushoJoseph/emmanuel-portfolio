@@ -40,12 +40,12 @@ export default function Navbar({ projectTitle, projectCategories, projectYear }:
         <div className="nav-left">
           <Link href="/" className="nav-logo-link">
             <FJMonogram size={40} />
+            {!isProject && (
+              <span className="nav-wordmark">
+                Emmanuel Folusho Joseph
+              </span>
+            )}
           </Link>
-          {!isProject && (
-            <span className="nav-wordmark">
-              Emmanuel Folusho Joseph
-            </span>
-          )}
         </div>
 
         {/* Right */}
