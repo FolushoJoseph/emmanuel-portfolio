@@ -1,0 +1,26 @@
+export type Category = 'Brand' | 'Marketing' | 'Product';
+export type SectionType = 'full-image' | 'double-image' | 'video';
+
+export interface Section {
+  id: string;
+  type: SectionType;
+  assets: string[];
+  order: number;
+}
+
+export interface Project {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  client: string;
+  role: string;
+  year: number;
+  categories: Category[];
+  cover_image: string;
+  published: boolean;
+  sections: Section[];
+  credits: string;
+  created_at: string;
+  updated_at: string;
+}
