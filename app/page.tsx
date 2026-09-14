@@ -71,6 +71,7 @@ export default async function Home() {
           font-weight: 700;
           font-family: inherit;
           text-decoration: none;
+          white-space: nowrap;
           transition: opacity 0.15s;
         }
         .cta-outlined:hover { opacity: 0.7; }

@@ -109,6 +109,7 @@ export default function Navbar({ projectTitle, projectCategories, projectYear }:
         .nav-logo-link {
           display: flex;
           align-items: center;
+          gap: 10px;
           background: none !important;
           border: none !important;
           padding: 0 !important;
