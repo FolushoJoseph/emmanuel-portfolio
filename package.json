@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cms": "node cms/server.mjs",
+    "test:cms": "node --test cms/server.test.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

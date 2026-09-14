@@ -1,6 +1,24 @@
 # Emmanuel Joseph Portfolio
 
-A static Next.js portfolio hosted on GitHub Pages. No database or admin server is required.
+A static Next.js portfolio hosted on GitHub Pages, with an optional local CMS. No database or publicly hosted admin server is required.
+
+## Use the local CMS (recommended)
+
+Double-click `Open CMS.cmd` in this folder, or run `npm run cms`. Open **http://127.0.0.1:4310** and keep the terminal window open. No sign-in page is needed: the editor runs only on your computer and uses your existing GitHub Git authentication when publishing.
+
+1. Click **Add Project**, fill in the details, and choose categories.
+2. Drop a cover image into the upload area. Add full-image, double-image, or video sections and use the arrows to arrange them.
+3. **Save Draft** stores the project and uploads in the ignored `.local-cms/` folder. These drafts are not sent to GitHub. Back up this folder if you move computers.
+4. **Preview** opens a local visual preview, including unpublished images.
+5. **Publish** validates the content, builds the static website, commits only this project's content and uploaded media, and pushes to `main`. Follow the deployment link to see when GitHub Pages has finished.
+
+Use **Edit** to update a project. Its URL stays stable when you change the title. **Unpublish** removes it from public listings on the next deployment; previously published content and media remain in Git history. Unpublishing is not private deletion.
+
+Images: JPG, PNG, WebP, GIF up to 10 MB each. Videos: MP4/WebM up to 20 MB each. Keep media compressed for fast loading. Files stay on your computer until published; uploaded files are not automatically deleted when removed from a gallery, so existing references remain safe.
+
+Publishing needs internet access and working Git authentication. If GitHub contains newer commits, or there are unrelated local changes, sync/commit those separately before publishing. On failure, read the editor message; local content is kept. If a Git commit fails after staging, resolve the Git issue and unstage the CMS files before retrying. If only the push fails, retry Publish to push the saved CMS commit. Closing the browser does not cancel a publication already started; keep the terminal running until it finishes.
+
+Run `npm run test:cms` to verify the local API and publishing boundaries. The CMS itself is not included in the exported website.
 
 ## Develop and build
 
@@ -8,7 +26,7 @@ Use Node.js 22 and run `npm ci`, then `npm run dev`.
 Run `npm run lint` and `npm run build` before publishing. The deployable website is generated in `out/`; `next start` does not serve a static export.
 For a local Pages-path build in PowerShell: `$env:NEXT_PUBLIC_BASE_PATH='/emmanuel-portfolio'; npm run build`.
 
-## Add a project
+## Add a project manually (optional)
 
 1. Copy `content/projects/example.json` to a new JSON file in the same folder.
 2. Choose a unique lowercase slug, such as `acme-branding`. Keep it unchanged to preserve shared links.
