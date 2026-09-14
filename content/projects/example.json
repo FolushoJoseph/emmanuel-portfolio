@@ -1,0 +1,14 @@
+{
+  "slug": "example-project",
+  "title": "Your project title",
+  "description": "Describe the project, the challenge and your contribution.",
+  "client": "Client name",
+  "role": "Brand Designer",
+  "year": 2026,
+  "categories": ["Brand"],
+  "cover_image": "/media/example-project/cover.webp",
+  "published": false,
+  "order": 0,
+  "sections": [],
+  "credits": "Emmanuel Folusho Joseph"
+}

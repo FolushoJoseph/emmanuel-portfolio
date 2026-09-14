@@ -9,6 +9,7 @@ import Button from '@/components/Button';
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+const configured = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 export default function Contact() {
   const [fields, setFields] = useState({
@@ -26,6 +27,7 @@ export default function Contact() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!configured) return;
     setStatus('sending');
     try {
       await emailjs.send(
@@ -105,11 +107,16 @@ export default function Contact() {
           />
 
           <div style={{ marginTop: '8px' }}>
-            <Button type="submit" fullWidth disabled={status === 'sending'}>
+            <Button type="submit" fullWidth disabled={!configured || status === 'sending'}>
               {status === 'sending' ? 'Sending…' : 'Submit'}
             </Button>
           </div>
 
+          {!configured && (
+            <p role="status" style={{ fontSize: '14px', lineHeight: 1.5 }}>
+              The contact form is currently unavailable. Please reach out through the social links below.
+            </p>
+          )}
           {status === 'success' && (
             <p style={{ fontSize: '14px', fontWeight: 600, opacity: 0.7, textAlign: 'center' }}>
               Message sent — I&apos;ll be in touch soon.

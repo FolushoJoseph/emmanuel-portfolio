@@ -21,6 +21,5 @@ export interface Project {
   published: boolean;
   sections: Section[];
   credits: string;
-  created_at: string;
-  updated_at: string;
+  order: number;
 }

@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { assetPath } from '@/lib/asset-path';
 import Image from 'next/image';
 import TagPill from './TagPill';
 import { Project } from '@/lib/types';
@@ -32,7 +33,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           {project.cover_image ? (
             <Image
-              src={project.cover_image}
+              src={assetPath(project.cover_image)}
               alt={project.title}
               fill
               style={{ objectFit: 'cover' }}

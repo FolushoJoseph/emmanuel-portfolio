@@ -1,19 +1,8 @@
-export const dynamic = 'force-dynamic';
-
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
-import { supabase } from '@/lib/supabase';
-import { Project } from '@/lib/types';
-
-async function getProjects(): Promise<Project[]> {
-  const { data } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('published', true)
-    .order('created_at', { ascending: false });
-  return (data as Project[]) ?? [];
-}
+import { getProjects } from '@/lib/projects';
 
 export default async function Home() {
   const projects = await getProjects();
@@ -45,9 +34,9 @@ export default async function Home() {
             <a href="#work" className="cta-outlined" style={{ flex: 1, justifyContent: 'center' }}>
               Explore my work ↓
             </a>
-            <a href="/contact" className="cta-solid" style={{ flex: 1, justifyContent: 'center' }}>
+            <Link href="/contact" className="cta-solid" style={{ flex: 1, justifyContent: 'center' }}>
               Get in touch
-            </a>
+            </Link>
           </div>
         </section>
 

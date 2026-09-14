@@ -1,19 +1,7 @@
-export const dynamic = 'force-dynamic';
-
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProjectRow from '@/components/ProjectRow';
-import { supabase } from '@/lib/supabase';
-import { Project } from '@/lib/types';
-
-async function getProjects(): Promise<Project[]> {
-  const { data } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('published', true)
-    .order('created_at', { ascending: false });
-  return (data as Project[]) ?? [];
-}
+import { getProjects } from '@/lib/projects';
 
 export default async function IndexPage() {
   const projects = await getProjects();

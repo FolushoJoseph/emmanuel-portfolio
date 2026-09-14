@@ -1,14 +1,11 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '*.supabase.co',
-        pathname: '/storage/v1/object/public/**',
-      },
-    ],
+    unoptimized: true,
   },
   turbopack: {
     root: __dirname,

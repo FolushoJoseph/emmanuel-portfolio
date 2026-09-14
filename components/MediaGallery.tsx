@@ -1,3 +1,4 @@
+import { assetPath } from '@/lib/asset-path';
 import { Section } from '@/lib/types';
 
 export default function MediaGallery({ sections }: { sections: Section[] }) {
@@ -18,7 +19,7 @@ export default function MediaGallery({ sections }: { sections: Section[] }) {
             >
               {section.assets[0] ? (
                 <img
-                  src={section.assets[0]}
+                  src={assetPath(section.assets[0])}
                   alt=""
                   style={{ width: '100%', display: 'block' }}
                 />
@@ -47,7 +48,7 @@ export default function MediaGallery({ sections }: { sections: Section[] }) {
                 >
                   {section.assets[i] ? (
                     <img
-                      src={section.assets[i]}
+                      src={assetPath(section.assets[i])}
                       alt=""
                       style={{ width: '100%', display: 'block' }}
                     />
@@ -70,7 +71,7 @@ export default function MediaGallery({ sections }: { sections: Section[] }) {
             >
               {section.assets[0] ? (
                 <video
-                  src={section.assets[0]}
+                  src={assetPath(section.assets[0])}
                   controls
                   style={{ width: '100%', display: 'block' }}
                 />

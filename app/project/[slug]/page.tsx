@@ -1,21 +1,18 @@
-export const dynamic = 'force-dynamic';
+export const dynamicParams = false;
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MediaGallery from '@/components/MediaGallery';
-import { supabase } from '@/lib/supabase';
-import { Project } from '@/lib/types';
+import { getProject, getProjects } from '@/lib/projects';
+import { assetPath } from '@/lib/asset-path';
 
-async function getProject(slug: string): Promise<Project | null> {
-  const { data } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
-  return data as Project | null;
+export function generateStaticParams() {
+  const params = getProjects().map(({ slug }) => ({ slug }));
+  // Next 16 rejects an empty static path list. This reserved path renders notFound
+  // until the first project is published; it never appears in public listings.
+  return params.length ? params : [{ slug: '_empty' }];
 }
 
 export default async function ProjectPage({
@@ -49,7 +46,7 @@ export default async function ProjectPage({
         >
           {project.cover_image && (
             <Image
-              src={project.cover_image}
+              src={assetPath(project.cover_image)}
               alt={project.title}
               fill
               style={{ objectFit: 'cover' }}
