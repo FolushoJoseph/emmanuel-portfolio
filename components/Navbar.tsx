@@ -13,7 +13,7 @@ interface NavbarProps {
 const NAV_LINKS = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
-  { href: '/index', label: 'Index' },
+  { href: '/work', label: 'Index' },
 ];
 
 export default function Navbar({ projectTitle, projectCategories, projectYear }: NavbarProps) {

@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import ProjectRow from '@/components/ProjectRow';
 import { getProjects } from '@/lib/projects';
 
-export default async function IndexPage() {
+export default async function WorkIndexPage() {
   const projects = await getProjects();
 
   return (
