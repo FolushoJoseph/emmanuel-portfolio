@@ -53,8 +53,8 @@ To hide a project, set `published` to `false` and deploy again. To remove its me
 
 ## GitHub Pages setup
 
-Repository: https://github.com/FolushoJoseph/emmanuel-portfolio
-Expected default URL: https://folushojoseph.github.io/emmanuel-portfolio/
+Repository: https://github.com/emmanuel-joseph-design/emmanuel-portfolio
+Expected default URL: https://emmanuel-joseph-design.github.io/emmanuel-portfolio/
 In Settings > Pages, choose GitHub Actions as the build source. The workflow in `.github/workflows/pages.yml` deploys `out/` after pushes to `main` or manual runs. It reads the configured Pages base path, including for a custom domain.
 
 ## Contact form

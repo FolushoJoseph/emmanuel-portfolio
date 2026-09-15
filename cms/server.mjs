@@ -73,7 +73,7 @@ export async function createCMS({ root = path.dirname(here), allowPublish = true
       if (!allowPublish) throw new Error('Publishing is disabled in this environment.');
       job = { state: 'running', message: 'Checking GitHub connection…' };
       if (await command('git', ['branch', '--show-current']) !== 'main') throw new Error('Switch the repository to main before publishing.');
-      if (await command('git', ['remote', 'get-url', 'origin']) !== 'https://github.com/FolushoJoseph/emmanuel-portfolio.git') throw new Error('Unexpected GitHub repository.');
+      if (await command('git', ['remote', 'get-url', 'origin']) !== 'https://github.com/emmanuel-joseph-design/emmanuel-portfolio.git') throw new Error('Unexpected GitHub repository.');
       await command('git', ['fetch', 'origin', 'main']);
       if (Number(await command('git', ['rev-list', '--count', 'HEAD..origin/main']))) throw new Error('GitHub has newer changes. Sync the repository before publishing.');
       const outgoing = await command('git', ['log', '--format=%s', 'origin/main..HEAD']);
@@ -125,7 +125,7 @@ export async function createCMS({ root = path.dirname(here), allowPublish = true
       job.message = 'Uploading to GitHub…';
       await command('git', ['push', 'origin', 'main']);
       await fs.rm(path.join(drafts, `${slug}.json`), { force: true });
-      job = { state: 'success', message: 'Sent to GitHub. The website will update when deployment finishes.', url: 'https://github.com/FolushoJoseph/emmanuel-portfolio/actions/workflows/pages.yml' };
+      job = { state: 'success', message: 'Sent to GitHub. The website will update when deployment finishes.', url: 'https://github.com/emmanuel-joseph-design/emmanuel-portfolio/actions/workflows/pages.yml' };
     } catch (error) {
       job = { state: 'error', message: `${error.message.split('\n')[0]} Your local content is kept. Fix the issue and retry.`, detail: String(error.stderr || error.stdout || '').slice(-3000) };
     } finally { busy = false; }
