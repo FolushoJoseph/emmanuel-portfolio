@@ -1,8 +1,26 @@
 # Emmanuel Joseph Portfolio
 
-A static Next.js portfolio hosted on GitHub Pages, with an optional local CMS. No database or publicly hosted admin server is required.
+A static Next.js portfolio hosted on GitHub Pages, with a private online CMS hosted on Cloudflare Workers. Project drafts and uploads live in a separate private GitHub repository, so no traditional database is required.
 
-## Use the local CMS (recommended)
+## Use the online CMS (recommended)
+
+Open **https://emmanuel-portfolio-cms.emmanuelfolushojoseph.workers.dev** and continue with GitHub. Access is restricted to the GitHub account `FolushoJoseph`.
+
+1. Click **Add Project**, fill in the project details, and upload the cover and gallery media.
+2. Click **Save Draft** to store the project in the private `emmanuel-joseph-design/portfolio-content` repository. Drafts and their media are not available through the public portfolio.
+3. Click **Preview** to review the project in the editor.
+4. Click **Publish** to copy only that project's public JSON and media into `emmanuel-joseph-design/emmanuel-portfolio`. GitHub Pages rebuilds the website automatically.
+5. Use **Unpublish** to remove the project from the public site while retaining its private draft.
+
+The GitHub App is installed only on `portfolio-content` and `emmanuel-portfolio`, with read/write content access. Its webhook is disabled. Client credentials and the encrypted-session key are stored as Cloudflare Worker secrets and are not committed to either repository.
+
+Images may be JPG, PNG, WebP, or GIF up to 10 MB. Videos may be MP4 or WebM up to 20 MB. Compress large media before uploading so the website remains fast and the repositories stay small.
+
+### Maintain the online CMS
+
+The Worker source is in `online-cms/`. Run `npm run test:cms:online` for its authorization, validation, and publishing tests. Run `npm run cms:online:dev` for local development and `npm run cms:online:deploy` to deploy after signing in with Wrangler. Local Worker secrets belong in `online-cms/.dev.vars`; start from `.dev.vars.example` and never commit the completed file.
+
+## Use the local CMS (optional fallback)
 
 Double-click `Open CMS.cmd` in this folder, or run `npm run cms`. Open **http://127.0.0.1:4310** and keep the terminal window open. No sign-in page is needed: the editor runs only on your computer and uses your existing GitHub Git authentication when publishing.
 

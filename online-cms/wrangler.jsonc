@@ -1,0 +1,21 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "emmanuel-portfolio-cms",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-09-15",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "vars": {
+    "GITHUB_OWNER": "emmanuel-joseph-design",
+    "CONTENT_REPO": "portfolio-content",
+    "SITE_REPO": "emmanuel-portfolio",
+    "ALLOWED_LOGIN": "FolushoJoseph",
+    "SITE_URL": "https://emmanuel-joseph-design.github.io/emmanuel-portfolio/"
+  },
+  "secrets": {
+    "required": ["GITHUB_CLIENT_ID", "GITHUB_CLIENT_SECRET", "SESSION_SECRET"]
+  }
+}

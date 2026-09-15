@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 /.local-cms/
+/online-cms/.dev.vars
+/online-cms/.wrangler/
+/.wrangler/
 /.pnp
 .pnp.*
 .yarn/*

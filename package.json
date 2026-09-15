@@ -5,6 +5,9 @@
   "scripts": {
     "cms": "node cms/server.mjs",
     "test:cms": "node --test cms/server.test.mjs",
+    "cms:online:dev": "wrangler dev --config online-cms/wrangler.jsonc",
+    "cms:online:deploy": "wrangler deploy --config online-cms/wrangler.jsonc",
+    "test:cms:online": "node --test online-cms/worker.test.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -22,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.37.1"
   }
 }
