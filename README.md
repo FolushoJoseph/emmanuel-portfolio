@@ -12,5 +12,6 @@ This portfolio is a growing collection of my selected brand and marketing design
 
 - **[View my portfolio](https://emmanuel-joseph-design.github.io/emmanuel-portfolio/)** — Explore my published projects and learn more about my work.
 - **[Open the project CMS](https://emmanuel-portfolio-cms.emmanuelfolushojoseph.workers.dev/)** — My private workspace for adding, editing, and publishing portfolio projects. GitHub authorization is required.
+- **[Open the image optimizer](https://portfolio-image-optimizer.emmanuelfolushojoseph.workers.dev/)** — Resize and convert portfolio images to WebP directly in the browser without uploading them to a server.
 
 If you'd like to discuss a project or work together, use the contact page on the portfolio website.
